@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 
@@ -20,6 +21,11 @@ import { DishService } from './services/dish.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
 
 
 @NgModule({
@@ -28,7 +34,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MenuComponent,
     DishdetailComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent,
+    HomeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +48,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AppRoutingModule
 
   
   ],
-  providers: [DishService],
+  providers: [DishService,PromotionService,LeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
