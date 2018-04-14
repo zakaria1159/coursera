@@ -1,3 +1,4 @@
+import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSliderModule} from '@angular/material/slider';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -36,6 +38,8 @@ import { ContactComponent } from './contact/contact.component';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
+import { baseURL } from './shared/baseurl';
+
 
 
 @NgModule({
@@ -75,14 +79,15 @@ import { LoginComponent } from './login/login.component';
     LayoutModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    HttpModule
     
     
     
 
   
   ],
-  providers: [DishService,PromotionService,LeaderService],
+  providers: [DishService,PromotionService,LeaderService,{provide: 'BaseURL', useValue: baseURL}, ProcessHttpmsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

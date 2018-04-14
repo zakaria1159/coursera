@@ -15,7 +15,7 @@
           <h3>{{dish.name|uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-        <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+        <img mat-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
       <mat-card-content>
         <p>{{dish.description}}</p>
       </mat-card-content>
@@ -86,7 +86,11 @@
     <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="!commentForm.valid">Submit</button>
     </form>
     </div>
-  <div [hidden]="dish">
+  <div [hidden]="dish || errMess">
       <mat-progress-spinner></mat-progress-spinner><h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="errMess">
+      <h2>Error</h2>
+      <h4>{{errMess}}</h4>
     </div>
 </div>
