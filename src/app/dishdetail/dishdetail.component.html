@@ -8,7 +8,7 @@
 
 
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility"  [@expand] > 
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -37,7 +37,7 @@
 
 
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility"  [@expand] >
     <h3>Comments</h3>
       <mat-list>
         <mat-list-item *ngFor="let comments of dish.comments" style="margin:30px">
@@ -87,7 +87,7 @@
     </form>
     </div>
   <div [hidden]="dish || errMess">
-      <mat-progress-spinner></mat-progress-spinner><h4>Loading . . . Please Wait</h4>
+      <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
     </div>
     <div *ngIf="errMess">
       <h2>Error</h2>

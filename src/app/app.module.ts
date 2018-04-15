@@ -1,9 +1,11 @@
+import { Feedback } from './shared/feedback';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule }  from '@angular/flex-layout';
-import { MatListModule, MatInputModule, MatSlideToggleModule, MatOptionModule, MatSelectModule, MatSpinner } from '@angular/material';
+import { MatListModule, MatInputModule, MatSlideToggleModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material';
@@ -14,9 +16,11 @@ import { MatDialogModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import {MatSliderModule} from '@angular/material/slider';
 import { HttpModule } from '@angular/http';
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularConfigFactory } from './shared/restConfig';
 
 
 
@@ -39,6 +43,9 @@ import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
 import { baseURL } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
+import { FeedbackService } from './services/feedback.service';
+
 
 
 
@@ -52,7 +59,8 @@ import { baseURL } from './shared/baseurl';
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
 
   entryComponents: [
@@ -61,7 +69,6 @@ import { baseURL } from './shared/baseurl';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     MatGridListModule,
     FlexLayoutModule,
     MatListModule,
@@ -80,14 +87,15 @@ import { baseURL } from './shared/baseurl';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatSliderModule,
-    HttpModule
+    HttpModule,
+    RestangularModule.forRoot(RestangularConfigFactory)
     
     
     
 
   
   ],
-  providers: [DishService,PromotionService,LeaderService,{provide: 'BaseURL', useValue: baseURL}, ProcessHttpmsgService],
+  providers: [DishService,PromotionService,LeaderService,FeedbackService,{provide: 'BaseURL', useValue: baseURL}, ProcessHttpmsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -97,6 +97,24 @@
           </p>
           <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
         </form>
-      </div>
-
-</div>
+        <span *ngIf="showfeedback">
+          <h3>Your Submission</h3>
+          <md-list-item>
+            <p mat-line>First Name: {{submission.firstname}}</p>
+            <p mat-line>Last Name: {{submission.lastname}}</p>
+            <p mat-line>Tel. number: {{submission.telnum}}</p>
+            <p mat-line>Email: {{submission.email}}</p>
+            <p mat-line>Contact you?: {{submission.agree}}</p>
+            <p mat-line>How?: {{submission.contacttype}}</p>
+            <p mat-line>Feedback: {{submission.message}}</p>
+          </md-list-item>
+        </span>
+          
+    
+         <div *ngIf="showspinner">
+        <md-spinner></md-spinner>
+        <h4>Loading... Please wait</h4>
+         </div>
+         
+        </div>
+    </div>
